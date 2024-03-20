@@ -4,30 +4,36 @@
 ### Instalação e Configuração
 
 #### 1. Clone o repositório:
-
 ```bash
 git clone https://github.com/lorenzouriel/deploy-app-with-docker.git
 cd deploy-app-with-docker
 ```
 
 2. Configure a versão correta do Python com `pyenv`:
-
 ```bash
 pyenv install 3.11.5
 pyenv local 3.11.5
 ```
 
 3. Configurar poetry para Python version 3.11.5 e ative o ambiente virtual:
-
 ```bash
 poetry env use 3.11.5
 poetry shell
 ```
 
 4. Instale as dependencias do projeto:
-
 ```bash
 poetry install
+```
+
+5. Realize um build da imagem:
+```bash
+docker build -t my-data-app-image .
+```
+
+6. Crie o container e suba a aplicação:
+```bash
+docker run -d -p 8501:8501 --name my-data-app-container my-data-app-image
 ```
 
 ### Deploy
@@ -75,6 +81,16 @@ poetry shell
 
 ```bash
 poetry install
+```
+
+5. Build the image:
+```bash
+docker build -t my-data-app-image .
+```
+
+6. Create the container and up the app:
+```bash
+docker run -d -p 8501:8501 --name my-data-app-container my-data-app-image
 ```
 
 ### Deploy
